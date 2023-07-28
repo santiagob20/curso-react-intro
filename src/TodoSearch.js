@@ -1,7 +1,7 @@
 function TodoSearch() {
   return (
-    <input placeholder="Cortar cebolla" />
+    <input placeholder="Escriba la tarea aca" className="TodoSearch" />
   )
 }
 
-export {  TodoSearch };
+export { TodoSearch };
