@@ -21,14 +21,14 @@ function App() {
   // Computed props // estados derivados
 const completedTodos = todos.filter(el => el.completed).length;
 const totalTodos = todos.length;
-
+const searchedTodos = todos.filter(el => el.text.toLowerCase().includes(searchValue.toLowerCase()))
   return (
     <React.Fragment>
       <TodoCounter completed={completedTodos} total={totalTodos} />
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <TodoList>
-        {defaultTodos.map(todo => (
+        {searchedTodos.map(todo => (
           <TodoItem key={todo.id} text={todo.text} completed={todo.completed} />
         ))}
       </TodoList >
