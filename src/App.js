@@ -14,16 +14,24 @@ const defaultTodos = [
   { "id": 2, "text": "Llorar", "completed": false }
 ]
 function App() {
+  // Estados
+  const [searchValue, setSearchValue] = React.useState('');
+  const [todos, setTodos] = React.useState(defaultTodos);
+
+  // Computed props // estados derivados
+const completedTodos = todos.filter(el => el.completed).length;
+const totalTodos = todos.length;
+
   return (
     <React.Fragment>
-      <TodoCounter completed={16} total={25} />
-      <TodoSearch />
+      <TodoCounter completed={completedTodos} total={totalTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <TodoList>
         {defaultTodos.map(todo => (
-          <TodoItem key={todo.id} text={todo.text} completed={todo.completed}/>
+          <TodoItem key={todo.id} text={todo.text} completed={todo.completed} />
         ))}
-      </TodoList>
+      </TodoList >
 
       <CreateTodoButton />
     </React.Fragment>
